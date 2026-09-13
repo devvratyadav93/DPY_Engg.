@@ -182,6 +182,12 @@ interface RFQPayload {
 ---
 
 ## Changelog
+### 2026-09-13 — GitHub Actions Automated CI/CD Pipeline & Remote Sync
+- Modified: `.github/workflows/ci.yml` (new), `.gitignore` (added `scratch/`, `.env*`), and synchronized remote repository `https://github.com/devvratyadav93/DYP_Engg..git`.
+- Before: Local-only builds requiring manual error discovery.
+- After: Automated GitHub Actions CI workflow executing Node 20 environment setup, dependency installation (`npm ci`), production build (`npm run build`), and artifact integrity checks across all 7 pages on every push and PR.
+- Reason: User requested automated CI/CD execution to eliminate manual error fixing for production issues.
+
 ### 2026-09-13 — Auth Pages Typography Scale & Spacious Spacing Recalibration
 - Modified: `src/styles/auth.css` (`.auth-split-page`, `.auth-form-column`, `.auth-form-wrapper`, `.auth-form-wrapper--login`, `.auth-form-wrapper--register`, `.form-group`, `.form-label`, `.form-input`, `.form-grid-2`, `.auth-options-row`, `.custom-checkbox-label`), `login/index.html`, and `register/index.html`.
 - Before: Forms stretched across `580px` max-width with large font clamps (1.8rem-1.9rem titles) and cramped 8px vertical margins, creating a "zoomed in and components too close" appearance.

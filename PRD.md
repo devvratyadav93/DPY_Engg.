@@ -81,6 +81,11 @@ Visual comparison and selection for:
 ---
 
 ## Changelog
+### 2026-09-13 — GitHub Actions Automated CI/CD Pipeline & Remote Sync
+- Changed: Configured automated GitHub Actions workflow (`.github/workflows/ci.yml`) triggering on pushes and pull requests to `main`. Automatically installs dependencies (`npm ci`), executes the Vite multi-page production build (`npm run build`), and validates all 7 page artifacts (`dist/index.html`, `dist/services/`, `dist/about/`, `dist/contact/`, `dist/login/`, `dist/register/`, and `dist/portal/`). Updated `.gitignore` with `scratch/` and `.env*` rules. Synchronized entire multi-page codebase and assets to remote GitHub repository (`https://github.com/devvratyadav93/DYP_Engg..git`).
+- Reason: User requested pushing everything to GitHub and establishing automated CI/CD execution to eliminate manual error fixing for production issues.
+- Impact: Automated verification on every push prevents broken builds from reaching production, and enables zero-touch deployment through Cloudflare Pages.
+
 ### 2026-09-13 — Auth Pages Typography Scale & Spacious Spacing Refinement
 - Changed: Recalibrated typography, container proportions, and vertical whitespace on `/login/` and `/register/`. Wrapped form and navigation in dedicated width-constrained wrappers (`.auth-form-wrapper--login` at `430px` max-width and `.auth-form-wrapper--register` at `530px` max-width), reduced oversized titles from 1.9rem down to crisp 1.45rem, and restored comfortable breathing room between form groups (`margin-bottom: 1.15rem`, `gap: 0.45rem`, `grid-gap: 1.15rem`, and `margin: 1.35rem` on action rows).
 - Reason: User reported that elements previously looked "zoomed in and components are too close. Make it little spacy."
