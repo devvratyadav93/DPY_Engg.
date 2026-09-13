@@ -1,0 +1,64 @@
+/* ==========================================================================
+   DPY Marine Engineering - Design System Variables & Tokens
+   ========================================================================== */
+
+:root {
+  /* Color Palette - Deep Oceanic Navy & Precision Maritime Cyan */
+  --bg-primary: #050d1a;
+  --bg-secondary: #0a192f;
+  --bg-tertiary: #0f2442;
+  --bg-card: rgba(14, 34, 61, 0.7);
+  --bg-card-hover: rgba(19, 45, 80, 0.85);
+  --bg-glass: rgba(7, 21, 39, 0.85);
+
+  /* Primary & Accent Tones */
+  --primary: #0284c7;
+  --primary-light: #38bdf8;
+  --primary-dark: #0369a1;
+  --primary-glow: rgba(56, 189, 248, 0.35);
+
+  --secondary: #0f3860;
+  --secondary-accent: #1e4976;
+
+  --accent-gold: #f59e0b;
+  --accent-gold-glow: rgba(245, 158, 11, 0.3);
+  --accent-emerald: #10b981;
+  --accent-emerald-glow: rgba(16, 185, 129, 0.25);
+
+  /* Text & Foreground */
+  --text-white: #ffffff;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
+  --text-cyan: #38bdf8;
+
+  /* Borders & Dividers */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(56, 189, 248, 0.2);
+  --border-focus: #38bdf8;
+
+  /* Typography */
+  --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Elevations & Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 10px 28px rgba(0, 0, 0, 0.45);
+  --shadow-cyan: 0 8px 24px rgba(2, 132, 199, 0.25);
+  --shadow-glow: 0 0 30px rgba(56, 189, 248, 0.2);
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 26px;
+  --radius-full: 9999px;
+
+  /* Layout & Transitions */
+  --max-width: 1280px;
+  --nav-height: 80px;
+  --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}

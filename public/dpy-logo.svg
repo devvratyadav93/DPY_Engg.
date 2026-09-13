@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 120" fill="none">
+  <defs>
+    <linearGradient id="wave1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="wave2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left Icon Emblem -->
+  <g transform="translate(10, 8)">
+    <!-- Main Letter D -->
+    <path d="M5 14H24C35 14 42 21 42 34C42 47 35 54 24 54H5V14ZM16 23V45H23C29 45 32 41 32 34C32 27 29 23 23 23H16Z" fill="#0284c7"/>
+
+    <!-- Main Letter P with Ship Cutout / Embed -->
+    <path d="M42 14H65C76 14 83 20 83 31C83 42 76 48 65 48H53V54H42V14Z" fill="#0f3860"/>
+    
+    <!-- Ship Silhouette Inside/Over P -->
+    <!-- Mast -->
+    <line x1="62" y1="10" x2="62" y2="18" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="57" y1="13" x2="67" y2="13" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Wheelhouse / Bridge -->
+    <path d="M55 18H69L67 24H57L55 18Z" fill="#ffffff"/>
+    <rect x="58" y="19.5" width="2" height="2" fill="#0f3860"/>
+    <rect x="62" y="19.5" width="2" height="2" fill="#0f3860"/>
+    <rect x="66" y="19.5" width="2" height="2" fill="#0f3860"/>
+    <path d="M53 24H71L68 31H56L53 24Z" fill="#e2e8f0"/>
+    <!-- Ship Bow & Hull Cutting Right -->
+    <path d="M48 31H76L69 47C66 52 61 54 55 54H48L48 31Z" fill="#ffffff"/>
+    <polygon points="56,33 71,33 67,41 56,41" fill="#0f3860"/>
+
+    <!-- Letter Y -->
+    <path d="M82 14H95L103 28L111 14H124L109 38V54H97V38L82 14Z" fill="#0284c7"/>
+
+    <!-- Dynamic Ocean Waves Under Ship and Acronym -->
+    <path d="M2 58 C 25 50, 50 63, 75 57 C 95 52, 110 59, 126 56 C 105 66, 80 62, 55 67 C 32 71, 15 65, 2 58 Z" fill="url(#wave1)"/>
+    <path d="M12 64 C 32 58, 55 69, 78 63 C 98 58, 115 65, 128 62 C 110 72, 85 68, 62 73 C 40 76, 25 71, 12 64 Z" fill="url(#wave2)"/>
+  </g>
+
+  <!-- Typography Right Side -->
+  <g transform="translate(155, 10)">
+    <!-- DPY Big Text -->
+    <text x="0" y="38" font-family="'Plus Jakarta Sans', 'Inter', 'Segoe UI', sans-serif" font-size="34" font-weight="900" fill="#0ea5e9" letter-spacing="2">DPY</text>
+    <text x="75" y="38" font-family="'Plus Jakarta Sans', 'Inter', 'Segoe UI', sans-serif" font-size="28" font-weight="800" fill="#ffffff" letter-spacing="2.5">MARINE ENGINEERING</text>
+    
+    <!-- Sub-disciplines line -->
+    <text x="0" y="60" font-family="'Plus Jakarta Sans', 'Inter', 'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#38bdf8" letter-spacing="3.2">SHIPBUILDING  |  OUTFITTING  |  PIPING  |  FABRICATION</text>
+    
+    <!-- Tagline in dynamic italic script styling -->
+    <text x="0" y="82" font-family="'Plus Jakarta Sans', 'Inter', Georgia, sans-serif" font-style="italic" font-size="13" font-weight="600" fill="#94a3b8" letter-spacing="0.5">Building Tomorrow's Vessels with Trust &amp; Excellence</text>
+  </g>
+</svg>
