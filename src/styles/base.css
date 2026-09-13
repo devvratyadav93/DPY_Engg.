@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Base Styles & Reset
+   Base Styles & Reset - Clean Maritime Light Mode
    ========================================================================== */
 
 *, *::before, *::after {
@@ -13,7 +13,7 @@ html {
   background-color: var(--bg-primary);
   color: var(--text-main);
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--nav-height) + 24px);
+  scroll-padding-top: calc(var(--nav-height) + 20px);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -21,30 +21,30 @@ html {
 body {
   min-height: 100vh;
   line-height: 1.6;
+  background-color: #ffffff;
   background-image: 
-    radial-gradient(circle at 15% 15%, rgba(2, 132, 199, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 85% 65%, rgba(15, 56, 96, 0.15) 0%, transparent 45%),
-    linear-gradient(to bottom, var(--bg-primary) 0%, #030a14 100%);
-  background-attachment: fixed;
+    radial-gradient(circle at 15% 10%, rgba(2, 132, 199, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 85% 65%, rgba(15, 56, 96, 0.03) 0%, transparent 45%);
+  color: var(--text-main);
   overflow-x: hidden;
 }
 
-/* Custom Maritime Grid Underlay */
+/* Maritime Technical Grid Underlay */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background-image: 
-    linear-gradient(rgba(56, 189, 248, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 189, 248, 0.025) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(rgba(2, 132, 199, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(2, 132, 199, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
   pointer-events: none;
   z-index: 0;
 }
 
 /* Typography Defaults */
 h1, h2, h3, h4, h5, h6 {
-  color: var(--text-white);
+  color: var(--text-heading);
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.02em;
@@ -57,13 +57,13 @@ p {
 }
 
 a {
-  color: var(--primary-light);
+  color: var(--primary);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
 a:hover {
-  color: var(--text-white);
+  color: var(--primary-dark);
 }
 
 button {
@@ -86,34 +86,62 @@ ul {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 var(--container-padding, 1.5rem);
+  position: relative;
+  z-index: 1;
+}
+
+.container-wide {
+  width: 100%;
+  max-width: var(--max-width-wide, 1720px);
+  margin: 0 auto;
+  padding: 0 var(--container-padding, 1.5rem);
+  position: relative;
+  z-index: 1;
+}
+
+.container-fluid {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--container-padding, 1.5rem);
   position: relative;
   z-index: 1;
 }
 
 /* Accessible focus outlines */
 :focus-visible {
-  outline: 2px solid var(--primary-light);
+  outline: 2px solid var(--primary);
   outline-offset: 3px;
 }
 
 /* Section Spacing */
 section {
-  padding: 5.5rem 0;
+  padding: 5rem 0;
   position: relative;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 3.25rem 0;
+  }
+  p {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
 }
 
 /* Scrollbar Customization */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 9px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--bg-tertiary);
+  background: #cbd5e1;
   border-radius: var(--radius-full);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
+  background: #94a3b8;
 }

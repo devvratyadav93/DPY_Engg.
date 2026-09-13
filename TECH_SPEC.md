@@ -10,64 +10,135 @@
 
 ## 1. Architecture Overview
 
-The application is structured as an ultra-fast, pre-rendered static single-page application (SPA) powered by Vite for modern asset bundling, zero-latency local development (HMR), and automated CSS minification.
+The application is structured as a multi-page static application (MPA) built with Vite 6.x, utilizing clean directory routes (`/services/`, `/about/`, `/contact/`, `/login/`, `/register/`, `/portal/`) for direct static hosting on Cloudflare Pages.
 
 ```
 DYP Engg/
-├── .gitignore
+├── vite.config.js              # Multi-page Rollup input configuration
+├── schema.sql                  # Cloudflare D1 SQLite database schema (users, inquiries, manpower)
 ├── package.json
 ├── PRD.md
 ├── TECH_SPEC.md
-├── index.html                  # Semantic, accessible HTML5 structure with SEO meta
+├── index.html                  # 1. Home Page
+├── services/
+│   └── index.html              # 2. Services Page
+├── about/
+│   └── index.html              # 3. About Page
+├── contact/
+│   └── index.html              # 4. Contact Page
+├── login/
+│   └── index.html              # 5. Client Login Page
+├── register/
+│   └── index.html              # 6. Client Register Page
+├── portal/
+│   └── index.html              # 7. Client Dashboard / Portal
 ├── public/
-│   ├── favicon.svg             # Maritime vessel vector icon
-│   └── dpy-logo.svg            # Custom vector recreation of DPY Marine Engineering logo
+│   ├── favicon.svg
+│   ├── dpy-header-logo-trans.png # Exact official letterhead logo
+│   └── _headers
 └── src/
-    ├── styles/
-    │   ├── variables.css       # Maritime design tokens (HSL oceanic blues, typography, elevation)
-    │   ├── base.css            # Modern reset, fluid type, accessibility focus styles
-    │   ├── components.css      # Buttons, badges, cards, modals, form controls
-    │   ├── navigation.css      # Glassmorphic header & mobile drawer
-    │   ├── hero.css            # Dynamic nautical hero & metrics ribbon
-    │   ├── services.css        # Services grid, category filters, detail modals
-    │   ├── estimator.css       # Interactive RFQ & manpower calculator
-    │   └── footer.css          # Compliance credentials & contact cards
+    ├── styles/                 # Modular CSS (variables, base, auth, navigation, etc.)
     └── scripts/
-        ├── main.js             # Entry point, navigation, scroll behavior
-        ├── services-data.js    # Data schema for 10 core disciplines
-        ├── quote-estimator.js  # Dynamic calculator logic & summary generation
-        └── rfq-modal.js        # Accessible modal dialog & form submission handler
+        ├── auth.js             # Session state, login/register/logout handlers
+        ├── main.js             # App entry, services rendering, mobile drawer
+        ├── services-data.js    # 10 core disciplines data
+        ├── quote-estimator.js  # Live estimator logic
+        └── rfq-modal.js        # Quotation modal dialog logic
 ```
 
 ---
 
-## 2. Design System Tokens & Aesthetic Palette
+## Changelog
+### 2026-09-13 — Single-Screen Viewport Calibration (Zero-Scroll 100vh)
+- Modified: `src/styles/auth.css`, `login/index.html`, and `register/index.html`.
+- Before: Full-page layout used expansive margins (`margin-bottom: 2rem`) and multi-card showcase lists, pushing total document height beyond 900px and requiring vertical scrolling.
+- After: Desktop container enforces `height: 100vh; max-height: 100vh; overflow: hidden;`. Form fields and headers use viewport-proportional clamps (`clamp(0.5rem, 1.1vh, 0.85rem)`). Replaced large card pillars with `.auth-quick-checks` vector check list. Streamlined registration to 3 essential 2-column rows (User ID, Full Name, Shipyard, Email, Phone, Password).
+- Reason: User requested single-screen fit without scrolling.
+
+### 2026-09-13 — Full-Page Split Authentication Architecture
+- Modified: `src/styles/components.css`, `src/styles/auth.css`, `login/index.html`, and `register/index.html`.
+- Before: Login and Register pages rendered a small centered floating card (`.auth-card`) constrained to 480px-580px with missing global form styles, causing inputs to fall back to unstyled browser defaults and cramped layout.
+- After: Implemented `.auth-split-page` full-height (100vh) split layout. Left panel (`.auth-showcase`) hosts high-contrast maritime branding, trust pillars, class certifications, and executive quotes. Right panel (`.auth-form-column`) hosts spacious, responsive form containers (`.auth-form-container`). Added global form controls system (`.form-group`, `.form-label`, `.form-input`, `.form-grid-2`, `.password-input-wrap`, `.input-addon-group`, `.auth-submit-btn`) to `src/styles/components.css` and `src/styles/auth.css`.
+- Reason: User rejected the console-like floating box and requested full-page professional layouts.
+
+### 2026-09-13 — Authentication Architecture Upgrade (User ID, Avatar Dropdown, Enterprise Registration)
+- Modified: `src/scripts/auth.js`, `schema.sql`, `register/index.html`, `login/index.html`, `src/styles/navigation.css`, `src/styles/auth.css`, and navbar action containers across all 5 main pages (`index.html`, `services/index.html`, `about/index.html`, `contact/index.html`, `portal/index.html`).
+- Before: Header displayed static "Client Login" and "Request Quote" buttons regardless of authentication status. Login only matched email. Registration form was basic.
+- After: Header dynamically toggles between `.nav-auth-buttons` (`Login` & `Register`) when unauthenticated, and `.user-avatar-dropdown` (avatar circle with uppercase 2-letter initials, online indicator dot, user/org metadata, and dropdown menu) when authenticated. Login accepts either `userId` (case-insensitive) or `email`. Registration page provides full enterprise input fields with User ID validation and password show/hide toggles. `users` table schema updated with `user_id TEXT UNIQUE`.
+- Reason: User requested `Login` and `Register` buttons instead of `Client Login` & `Request Quote`, User ID login support, a professional registration page, and displaying the user's Avatar upon login.
+
+### 2026-09-13 — Home Page Leadership Spotlight Teaser Removed
+- Modified: Removed the redundant `ABOUT LEADERSHIP TEASER` component from `index.html`.
+- Before: Home page contained a teaser card linking to the CEO profile.
+- After: Home page ends cleanly after the Commercial Engagement Models section, keeping all in-depth leadership and executive biography content consolidated within `/about/`.
+- Reason: User requested removing this duplicate component.
+
+### 2026-09-13 — Replacement of Estimator with 3-Tier Commercial Engagement Matrix
+- Modified: Removed `interactive-estimator` section and decoupled `quote-estimator.js` / `estimator.css` from `index.html`. Added 3 high-resolution engagement photography assets (`public/images/engagement/subcontract-model.jpg`, `labour-model.jpg`, `rate-contract-model.jpg`). Enhanced `.contract-card` component with 16:9 photography cover headers, glassmorphic badges, hover elevation, and direct modal RFQ triggers on both `index.html` and `services/index.html`.
+- Before: `index.html` hosted an interactive number counter estimator widget.
+- After: `index.html` and `services/index.html` feature a cohesive 3-Tier Commercial Engagement Matrix with authentic shipyard photography and 1-click RFQ scopes.
+- Reason: User requested removing the estimator and implementing Option 4 with relevant photos.
+
+### 2026-09-13 — Services Page Authentic Photography & Schema Expansion
+- Modified: Enhanced `ServiceDiscipline` interface with `image`, `imageAlt`, and `categoryLabel`. Added 10 high-resolution marine engineering photography assets in `public/images/services/`. Updated `.service-card` CSS with 16:9 aspect-ratio cover container, glassmorphic badges, and hover zoom.
+- Before: Service cards rendered only SVG vector icons and textual metadata without photographic context.
+- After: Service cards render edge-to-edge 16:9 authentic maritime photography, dark gradient depth overlay, glassmorphic category badges, numeric indicator, and smooth 1.07x hover zoom.
+- Reason: User requested adding relevant photos for each service on the Services Page.
+
+### 2026-09-13 — CEO Executive Portrait Asset Integration
+- Modified: Added optimized WebP/PNG executive portrait asset `public/images/ceo-dwarika-prasad-yadav.webp`; integrated in About and Home templates.
+- Reason: User provided CEO photo reference.
+
+### 2026-09-13 — Multi-Page Architecture & Client Authentication
+- Modified: Configured Vite MPA build (`vite.config.js`) for 7 dedicated pages; added `users` authentication table to `schema.sql`; implemented client session manager `src/scripts/auth.js`.
+- Before: Single-page application with hash-based section scroll.
+- After: Multi-page static architecture with dedicated routes and client portal.
+- Reason: User requested separate pages for Home, Services, About, Contact, plus Login/Register.
+
+### 2026-09-13 — Switched to Light Mode & Added Cloudflare D1 Schema
 
 | Token | Hex / HSL | Usage |
 |-------|-----------|-------|
-| `--color-navy-dark` | `#071527` / `hsl(214, 70%, 9%)` | Deep maritime ocean background |
-| `--color-navy-card` | `#0d233f` / `hsl(214, 65%, 15%)` | Elevated card surfaces |
-| `--color-cyan-primary` | `#0284c7` / `hsl(200, 98%, 39%)` | Primary brand action color |
-| `--color-cyan-bright` | `#38bdf8` / `hsl(199, 89%, 60%)` | Accents, highlights, glows |
-| `--color-steel-light` | `#94a3b8` / `hsl(215, 20%, 65%)` | Secondary technical text & borders |
-| `--color-white` | `#ffffff` / `hsl(0, 0%, 100%)` | Heading text, pristine contrast |
-| `--font-primary` | `'Plus Jakarta Sans', 'Inter', sans-serif` | Modern, authoritative technical typography |
+| `--bg-primary` | `#ffffff` | Clean white document background |
+| `--bg-secondary` | `#f8fafc` | Soft light slate background |
+| `--navy-dark` | `#091e36` | Headings, title typography, footer |
+| `--navy-primary` | `#0f294a` | Subheadings, bold labels |
+| `--primary` | `#0284c7` | Primary ocean blue action color |
+| `--primary-light` | `#0ea5e9` | Hover states and interactive accents |
+| `--text-main` | `#1e293b` | Body text high contrast |
+| `--text-muted` | `#475569` | Secondary descriptions and captions |
+| `--border-subtle` | `#e2e8f0` | Card borders and dividers |
+| `--font-primary` | `'Plus Jakarta Sans', sans-serif` | Modern, authoritative technical typography |
 
 ---
 
-## 3. Data Contracts & State Management
+## 3. Data Contracts & Database Architecture (Cloudflare D1)
 
-### 3.1 Service Discipline Schema
+### 3.1 Database Engine: SQLite Dialect
+Cloudflare D1 is built on SQLite. Local development runs on SQLite (or Wrangler local D1 simulation), guaranteeing zero dialect drift when deploying to production Cloudflare D1.
+
+Schema file defined in `schema.sql`:
+- `rfq_inquiries`: Captures proposal requests, contact credentials, and status workflow.
+- `manpower_requests`: Captures specific trade counts (Welders, Fitters, Fabricators, Supervisors).
+- `vendor_registrations`: Handles shipyard vendor panel onboarding.
+
+---
+
+### 3.2 Service Discipline Schema
 ```typescript
 interface ServiceDiscipline {
   id: string;
   category: 'shipbuilding' | 'piping' | 'repair' | 'manpower';
+  categoryLabel: string;
+  number: string;
   title: string;
   tagline: string;
+  image: string;
+  imageAlt: string;
   description: string;
-  keyDeliverables: string[];
-  certificationsOrStandards: string[];
-  iconSvg: string;
+  deliverables: string[];
+  standards: string;
+  icon: string;
 }
 ```
 
@@ -111,6 +182,48 @@ interface RFQPayload {
 ---
 
 ## Changelog
+### 2026-09-13 — Auth Pages Typography Scale & Spacious Spacing Recalibration
+- Modified: `src/styles/auth.css` (`.auth-split-page`, `.auth-form-column`, `.auth-form-wrapper`, `.auth-form-wrapper--login`, `.auth-form-wrapper--register`, `.form-group`, `.form-label`, `.form-input`, `.form-grid-2`, `.auth-options-row`, `.custom-checkbox-label`), `login/index.html`, and `register/index.html`.
+- Before: Forms stretched across `580px` max-width with large font clamps (1.8rem-1.9rem titles) and cramped 8px vertical margins, creating a "zoomed in and components too close" appearance.
+- After: Constrained login wrapper to `430px` and register wrapper to `530px`, scaled titles down to crisp `1.45rem`, relaxed vertical spacing to `margin-bottom: 1.15rem` and `gap: 0.45rem`, and expanded grid gap to `1.15rem`.
+- Reason: User requested removing the zoomed-in look and making components spacious while maintaining zero vertical scrolling on 100vh desktop viewports.
+
+### 2026-09-13 — Hero CTA Labels Streamlined
+- Modified: `index.html` hero actions markup.
+- Before: Primary button labelled "Request Work Package Quote", secondary button labelled "Explore 10 Services".
+- After: Primary button renamed to "Request Quote", secondary button renamed to "Explore Services".
+- Reason: User requested punchier CTA labels matching the header navigation action.
+
+### 2026-09-13 — Hero Background GIF Finalized: Option #1 (A-ROSA Sailing Bow)
+- Modified: `index.html` (set background image permanently to `/images/home-hero-bg-1.gif` with descriptive alt attribute `alt="Marine Vessel Navigating Open Waters - DPY Engineering"`), retained gradient overlay (`.hero-overlay`) with 90-degree transition for WCAG AAA dark navy text contrast.
+- Before: Testing options sequentially (Option #1 -> Option #2 -> Option #3).
+- After: Option #1 finalized and active. Alternate candidate files retained in `public/images/` as staged assets.
+- Reason: User completed review of all three downloaded candidates and selected Option #1.
+
+### 2026-09-13 — Hero Background GIF Evaluation: Option #1 (A-ROSA Sailing Bow)
+- Modified: `index.html` (updated background image to `/images/home-hero-bg-1.gif`), centered object position in `src/styles/hero.css`, and mapped all 3 candidate GIFs from `Supporting Docs/Home GIF/` into `public/images/`.
+- Before: Generated synthetic Goa Shipyard animated GIF.
+- After: Active hero background set to user-selected candidate GIF #1 (`GIF by A-ROSA Kreuzfahrten.gif` → `home-hero-bg-1.gif`), with options #2 (`home-hero-bg-2.gif`) and #3 (`home-hero-bg-3.gif`) staged for immediate switching.
+- Reason: User workflow to evaluate candidate downloaded GIFs one-by-one.
+
+### 2026-09-13 — Hero Animated Shipyard GIF Background & Component Streamlining
+- Modified: `index.html` (removed `.hero-badge` and `.hero-card`), `src/styles/hero.css` (`.hero-bg-media`, `.hero-gif-bg`, `.hero-overlay`, `.hero-content`), and generated `public/images/shipyard-hero-bg.gif`.
+- Before: Two-column grid with a highlighted badge and right-side capability matrix card, over a simple linear gradient.
+- After: Seamless looping animated background GIF depicting Goa Shipyard Ltd. drydocks, naval hulls, and animated water ripples (`/images/shipyard-hero-bg.gif`), accompanied by a protective 90-degree gradient overlay for optimal readability.
+- Reason: User requested removal of the highlighted badge and capability card, and integration of an animated GIF background in the top section of the Home page.
+
+### 2026-09-13 — Wide Layout Expansion & Mobile Responsive Architecture
+- Modified: `variables.css` (`--max-width: 1560px;`, `--max-width-wide: 1720px;`, `--container-padding: clamp(1.25rem, 3.5vw, 3.5rem);`), `base.css` (`.container`, `.container-wide`, `.container-fluid`), `navigation.css`, `components.css`, `hero.css`, `contact.css`, `estimator.css`, `auth.css`, and page templates.
+- Before: Constrained `1280px` max-width and `860px` inline page headers causing excessive empty whitespace gutters on 1080p and ultrawide monitors.
+- After: Full-screen responsive architecture filling 85%+ viewport width on desktop, dynamic fluid typography, and mobile-first touch optimization (stacking grids, 44px tap targets, 88vw mobile drawer).
+- Reason: User requested efficient horizontal space utilization on desktop displays and verified mobile excellence.
+
+### 2026-09-13 — Brand Identity Hardcoded Typography & Vector Emblem
+- Modified: Header navigation and footer brand markup across all 7 pages and `navigation.css`.
+- Before: Integrated full raster image (`dpy-header-logo-trans.png`) which rendered sub-text illegible at scaled navbar dimensions.
+- After: Paired standalone transparent DPY vessel emblem (`public/dpy-mark-trans.png`) with hardcoded HTML typography (`.brand-company-title`, `.brand-company-services`, `.brand-company-tagline`) styled with responsive font-scaling and breakpoint control.
+- Reason: Eliminates raster scaling blur, providing 100% vector-crisp typography for "MARINE ENGINEERING", "SHIPBUILDING • OUTFITTING • PIPING • FABRICATION", and "Building Tomorrow's Vessels with Trust & Excellence".
+
 ### 2026-09-13 — Initial TECH_SPEC Created
 - Modified: Complete technical specification for the Vite static architecture.
 - Before: Blank project repository.

@@ -1,25 +1,30 @@
 /* ==========================================================================
-   Interactive RFQ & Manpower Estimator Styles
+   Interactive RFQ & Manpower Estimator - Clean Maritime Light Mode
    ========================================================================== */
 
+#estimator {
+  background: #ffffff;
+}
+
 .estimator-container {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-light);
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
   border-radius: var(--radius-xl);
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-md);
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
 }
 
 .estimator-controls {
-  padding: 2.75rem;
+  padding: clamp(1.75rem, 3vw, 3rem);
+  background: #ffffff;
 }
 
 .estimator-step {
   margin-bottom: 2rem;
   padding-bottom: 1.75rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .estimator-step:last-child {
@@ -36,22 +41,22 @@
 }
 
 .step-tag {
-  width: 26px;
-  height: 26px;
-  background: var(--primary);
+  width: 28px;
+  height: 28px;
+  background: #0284c7;
   border-radius: 50%;
-  color: var(--text-white);
-  font-size: 0.8rem;
-  font-weight: 700;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .step-title {
-  font-size: 1.1rem;
+  font-size: 1.12rem;
   font-weight: 700;
-  color: var(--text-white);
+  color: var(--navy-dark);
 }
 
 /* Category Selection Pills */
@@ -74,21 +79,26 @@
 .discipline-label {
   display: block;
   padding: 0.85rem 1rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
   border-radius: var(--radius-md);
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  color: var(--text-muted);
+  color: #475569;
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
+.discipline-label:hover {
+  background: #f0f7ff;
+  border-color: #cbd5e1;
+}
+
 .discipline-option input:checked + .discipline-label {
-  background: rgba(2, 132, 199, 0.2);
-  border-color: var(--primary-light);
-  color: var(--text-white);
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+  background: #e0f2fe;
+  border-color: #0284c7;
+  color: #0369a1;
+  box-shadow: 0 0 10px rgba(2, 132, 199, 0.15);
 }
 
 /* Manpower Counter Rows */
@@ -99,8 +109,8 @@
 }
 
 .counter-item {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   border-radius: var(--radius-md);
   padding: 1rem;
   display: flex;
@@ -109,14 +119,14 @@
 }
 
 .counter-info h5 {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-white);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--navy-dark);
 }
 
 .counter-info p {
-  font-size: 0.75rem;
-  color: var(--text-subtle);
+  font-size: 0.78rem;
+  color: #64748b;
 }
 
 .counter-controls {
@@ -126,14 +136,14 @@
 }
 
 .counter-btn {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: var(--radius-sm);
-  background: rgba(56, 189, 248, 0.15);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  color: var(--primary-light);
-  font-weight: 700;
-  font-size: 1rem;
+  background: #e0f2fe;
+  border: 1px solid #bae6fd;
+  color: #0284c7;
+  font-weight: 800;
+  font-size: 1.1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -141,46 +151,47 @@
 }
 
 .counter-btn:hover {
-  background: var(--primary);
-  color: var(--text-white);
+  background: #0284c7;
+  color: #ffffff;
 }
 
 .counter-val {
   font-family: var(--font-mono);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  color: var(--text-white);
+  color: var(--navy-dark);
   min-width: 28px;
   text-align: center;
 }
 
-/* Estimator Live Summary Column */
+/* Estimator Live Summary Column (Navy anchor panel) */
 .estimator-summary {
-  background: linear-gradient(180deg, #0a1f3a 0%, #061527 100%);
-  border-left: 1px solid var(--border-light);
-  padding: 2.75rem;
+  background: #091e36;
+  border-left: 1px solid #cbd5e1;
+  padding: clamp(1.75rem, 3vw, 3rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  color: #ffffff;
 }
 
 .summary-title {
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   font-weight: 800;
-  color: var(--text-white);
+  color: #ffffff;
   margin-bottom: 0.35rem;
 }
 
 .summary-subtitle {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-bottom: 1.75rem;
+  font-size: 0.88rem;
+  color: #94a3b8;
+  margin-bottom: 2rem;
 }
 
 .summary-breakdown {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.15rem;
   margin-bottom: 2rem;
 }
 
@@ -188,40 +199,40 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .summary-label {
-  font-size: 0.9rem;
-  color: var(--text-muted);
+  font-size: 0.92rem;
+  color: #cbd5e1;
 }
 
 .summary-value {
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   font-weight: 700;
-  color: var(--text-white);
+  color: #ffffff;
 }
 
 .summary-value.highlight {
-  color: var(--primary-light);
+  color: #38bdf8;
 }
 
 .summary-badge-strip {
-  background: rgba(2, 132, 199, 0.1);
-  border: 1px dashed rgba(56, 189, 248, 0.3);
+  background: rgba(2, 132, 199, 0.15);
+  border: 1px dashed rgba(56, 189, 248, 0.4);
   border-radius: var(--radius-md);
-  padding: 1rem;
+  padding: 1.15rem;
   margin-bottom: 2rem;
 }
 
 .summary-badge-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.82rem;
-  color: #cbd5e1;
-  margin-bottom: 0.4rem;
+  gap: 0.55rem;
+  font-size: 0.85rem;
+  color: #e2e8f0;
+  margin-bottom: 0.45rem;
 }
 
 .summary-badge-item:last-child {
@@ -229,8 +240,8 @@
 }
 
 .summary-badge-item svg {
-  width: 14px;
-  height: 14px;
+  width: 15px;
+  height: 15px;
   color: #34d399;
 }
 
@@ -240,7 +251,7 @@
   }
   .estimator-summary {
     border-left: none;
-    border-top: 1px solid var(--border-light);
+    border-top: 1px solid #cbd5e1;
   }
 }
 
@@ -249,6 +260,6 @@
     grid-template-columns: 1fr;
   }
   .estimator-controls, .estimator-summary {
-    padding: 1.5rem;
+    padding: 1.75rem;
   }
 }

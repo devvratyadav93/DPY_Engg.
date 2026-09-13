@@ -3,17 +3,11 @@
  */
 
 import { SERVICES_DATA } from './services-data.js';
-import { initQuoteEstimator } from './quote-estimator.js';
 import { initRfqModal } from './rfq-modal.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize RFQ Modal Dialog
   const rfqModal = initRfqModal();
-
-  // 2. Initialize Interactive Manpower Estimator
-  initQuoteEstimator((data) => {
-    rfqModal.open(data);
-  });
 
   // 3. Render 10 Core Marine Services
   renderServices('all');
@@ -148,15 +142,28 @@ function renderServices(activeCategory) {
 
   container.innerHTML = filtered.map(service => `
     <article class="service-card" data-category="${service.category}">
-      <div>
+      <div class="service-card-image-wrap">
+        <img 
+          src="${service.image}" 
+          alt="${service.imageAlt}" 
+          class="service-card-img" 
+          loading="lazy" 
+          width="480" 
+          height="270"
+        />
+        <div class="service-card-image-overlay"></div>
+        <span class="service-card-category-badge">${service.categoryLabel}</span>
+        <span class="service-number">#${service.number}</span>
+      </div>
+
+      <div class="service-card-body">
         <div class="service-card-top">
           <div class="service-icon-box" aria-hidden="true">
             ${service.icon}
           </div>
-          <span class="service-number">${service.number}</span>
         </div>
-        <h3 class="service-title">${service.title}</h3>
         <div class="service-tagline">${service.tagline}</div>
+        <h3 class="service-title">${service.title}</h3>
         <p class="service-desc">${service.description}</p>
         
         <div class="service-deliverables">
@@ -170,13 +177,13 @@ function renderServices(activeCategory) {
             `).join('')}
           </ul>
         </div>
-      </div>
 
-      <div class="service-card-bottom">
-        <span class="service-standards-tag">${service.standards}</span>
-        <button class="btn btn-sm btn-outline" data-open-rfq data-open-rfq-scope="${service.title}">
-          Inquire Scope
-        </button>
+        <div class="service-card-bottom">
+          <span class="service-standards-tag">${service.standards}</span>
+          <button class="btn btn-sm btn-outline" data-open-rfq data-open-rfq-scope="${service.title}">
+            Inquire Scope
+          </button>
+        </div>
       </div>
     </article>
   `).join('');

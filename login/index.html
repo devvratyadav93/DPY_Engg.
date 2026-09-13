@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Portal Login | DPY Marine Engineering</title>
+  <meta name="description" content="Secure client login for shipyard procurement managers, vessel owners, and contractors to access work package statuses and DPY Marine Engineering services." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+
+  <!-- Modular Stylesheets -->
+  <link rel="stylesheet" href="/src/styles/variables.css" />
+  <link rel="stylesheet" href="/src/styles/base.css" />
+  <link rel="stylesheet" href="/src/styles/components.css" />
+  <link rel="stylesheet" href="/src/styles/navigation.css" />
+  <link rel="stylesheet" href="/src/styles/auth.css" />
+</head>
+<body>
+
+  <div class="auth-split-page">
+    <!-- Left Showcase Pane (Compact Single Screen) -->
+    <aside class="auth-showcase">
+      <div>
+        <a href="/" class="auth-showcase-brand" aria-label="DPY Marine Engineering Homepage">
+          <img src="/dpy-mark-trans.png" alt="DPY Marine Engineering Logo" class="auth-showcase-logo" />
+          <div class="auth-showcase-brand-text">
+            <span class="auth-showcase-title">MARINE ENGINEERING</span>
+            <span class="auth-showcase-sub">SHIPBUILDING &bull; OUTFITTING &bull; PIPING &bull; FABRICATION</span>
+          </div>
+        </a>
+
+        <div class="auth-showcase-body">
+          <div class="auth-showcase-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span>Defence &amp; Commercial Shipyard Partner</span>
+          </div>
+
+          <h2 class="auth-showcase-heading">
+            Precision Marine Engineering &amp; Subcontract Workforce
+          </h2>
+          <p class="auth-showcase-desc">
+            Empowering naval architects, shipyard procurement officers, and vessel owners with 250+ certified marine tradesmen across Goa and Indian ports.
+          </p>
+
+          <div class="auth-quick-checks">
+            <div class="auth-check-item">
+              <div class="auth-check-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>10 Core Disciplines: Hull Outfitting, Piping &amp; Fabrication</span>
+            </div>
+            <div class="auth-check-item">
+              <div class="auth-check-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>Class-Inspected 6G Welders &amp; Riggers (IRS, ABS, DNV)</span>
+            </div>
+            <div class="auth-check-item">
+              <div class="auth-check-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>Rapid 48–72h Turnkey Mobilization to Berths &amp; Slips</span>
+            </div>
+          </div>
+
+          <div class="auth-quote-card">
+            <p>&ldquo;Committed to zero-rework execution and honoring your yard delivery milestone.&rdquo;</p>
+            <div class="author">Dwarika Prasad Yadav &bull; Proprietor &amp; CEO</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="auth-showcase-footer">
+        <div class="auth-security-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span>256-Bit SSL Encrypted Session</span>
+        </div>
+        <span>ISO 9001:2015 Aligned</span>
+      </div>
+    </aside>
+
+    <!-- Right Form Pane (Spacious Single Screen) -->
+    <main class="auth-form-column">
+      <div class="auth-form-wrapper auth-form-wrapper--login">
+        <div class="auth-form-nav">
+          <a href="/" class="auth-back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            <span>Back to Home</span>
+          </a>
+          <div class="auth-switch-text">
+            New Yard? <a href="/register/">Register Organization &rarr;</a>
+          </div>
+        </div>
+
+        <div class="auth-form-container">
+          <div class="auth-form-header">
+            <span class="auth-form-tag">Client Portal Login</span>
+            <h1 class="auth-form-title">Sign In to Your Account</h1>
+            <p class="auth-form-subtitle">Enter your credentials to review active work packages &amp; live RFQs.</p>
+          </div>
+
+          <!-- Quick Demo Login Banner -->
+          <div class="auth-demo-banner">
+            <div class="auth-demo-text">
+              <strong>⚡ Quick Demo: Goa Shipyard Limited</strong>
+              <span>1-click credentials for evaluation</span>
+            </div>
+            <button type="button" id="btn-demo-login" class="auth-demo-btn">
+              Auto-Fill (@gsl_procure)
+            </button>
+          </div>
+
+          <div class="auth-divider">Or sign in with credentials</div>
+
+          <div id="login-status" class="form-status"></div>
+
+          <form id="login-form">
+            <div class="form-group">
+              <label class="form-label" for="login-identifier">
+                <span>User ID or Official Email *</span>
+                <span class="form-label-hint">e.g. gsl_procure</span>
+              </label>
+              <input 
+                type="text" 
+                id="login-identifier" 
+                class="form-input" 
+                placeholder="User ID or email address" 
+                required 
+                autocomplete="username" 
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="login-password">
+                <span>Password *</span>
+              </label>
+              <div class="password-input-wrap">
+                <input 
+                  type="password" 
+                  id="login-password" 
+                  class="form-input" 
+                  placeholder="••••••••" 
+                  required 
+                  autocomplete="current-password" 
+                />
+                <button type="button" class="password-toggle-btn" id="toggle-login-password" aria-label="Toggle password visibility">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="auth-options-row">
+              <label style="display: flex; align-items: center; gap: 0.5rem; color: #475569; cursor: pointer;">
+                <input type="checkbox" id="remember-me" checked style="accent-color: #0284c7; width: 15px; height: 15px;" />
+                <span>Remember this device</span>
+              </label>
+              <a href="/contact/" style="color: #0284c7; font-weight: 600; text-decoration: none;">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="auth-submit-btn">
+              <span>Sign In to Client Portal</span>
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </form>
+
+          <div class="auth-support-note">
+            Technical Desk: <a href="tel:+919876543210">+91 98765 43210</a> &bull; <a href="mailto:procurement@dpymarine.com">procurement@dpymarine.com</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module">
+    import { loginUser, getCurrentUser } from '/src/scripts/auth.js';
+
+    // Redirect if already logged in
+    if (getCurrentUser()) {
+      window.location.href = '/portal/';
+    }
+
+    const form = document.getElementById('login-form');
+    const statusBox = document.getElementById('login-status');
+    const demoBtn = document.getElementById('btn-demo-login');
+    const identifierInput = document.getElementById('login-identifier');
+    const passwordInput = document.getElementById('login-password');
+    const togglePwdBtn = document.getElementById('toggle-login-password');
+
+    // Password visibility toggle
+    togglePwdBtn.addEventListener('click', () => {
+      const isPassword = passwordInput.type === 'password';
+      passwordInput.type = isPassword ? 'text' : 'password';
+      togglePwdBtn.innerHTML = isPassword 
+        ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`
+        : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
+    });
+
+    demoBtn.addEventListener('click', () => {
+      identifierInput.value = 'gsl_procure';
+      passwordInput.value = 'demo1234';
+      executeLogin('gsl_procure', 'demo1234');
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const identifier = identifierInput.value.trim();
+      const password = passwordInput.value;
+      executeLogin(identifier, password);
+    });
+
+    function executeLogin(identifier, password) {
+      statusBox.style.display = 'none';
+      const result = loginUser(identifier, password);
+      if (result.success) {
+        statusBox.className = 'form-status success';
+        statusBox.textContent = 'Login successful! Redirecting to your Client Dashboard...';
+        statusBox.style.display = 'block';
+        setTimeout(() => {
+          window.location.href = '/portal/';
+        }, 600);
+      } else {
+        statusBox.className = 'form-status error';
+        statusBox.textContent = result.error || 'Invalid credentials';
+        statusBox.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>

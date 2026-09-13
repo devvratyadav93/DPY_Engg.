@@ -1,0 +1,39 @@
+name: CI / Production Build Verification
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-verify:
+    name: Verify Multi-Page Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify production build
+        run: npm run build
+
+      - name: Verify build artifacts integrity
+        run: |
+          test -f dist/index.html || (echo "Missing dist/index.html" && exit 1)
+          test -f dist/services/index.html || (echo "Missing dist/services/index.html" && exit 1)
+          test -f dist/about/index.html || (echo "Missing dist/about/index.html" && exit 1)
+          test -f dist/contact/index.html || (echo "Missing dist/contact/index.html" && exit 1)
+          test -f dist/login/index.html || (echo "Missing dist/login/index.html" && exit 1)
+          test -f dist/register/index.html || (echo "Missing dist/register/index.html" && exit 1)
+          test -f dist/portal/index.html || (echo "Missing dist/portal/index.html" && exit 1)
+          echo "All 7 enterprise pages built and verified successfully!"

@@ -7,9 +7,12 @@ export const SERVICES_DATA = [
   {
     id: "hull-outfitting",
     category: "shipbuilding",
+    categoryLabel: "Hull & Structural",
     number: "01",
     title: "Hull Outfitting & Installation",
     tagline: "Precision Hull Mechanical & Deck Installations",
+    image: "/images/services/hull-outfitting.jpg",
+    imageAlt: "Hull Outfitting and Heavy Deck Machinery Installation in Shipyard",
     description: "End-to-end outfitting of vessel compartments, deck machinery foundations, mast fittings, watertight doors, hatches, manholes, and accommodation ventilation systems in accordance with naval drawings.",
     deliverables: [
       "Deck machinery & mooring gear foundations",
@@ -23,9 +26,12 @@ export const SERVICES_DATA = [
   {
     id: "structural-fabrication",
     category: "shipbuilding",
+    categoryLabel: "Hull & Structural",
     number: "02",
     title: "Structural Fabrication & Erection",
     tagline: "Heavy Marine Hull Block Assembly & Integration",
+    image: "/images/services/structural-fabrication.jpg",
+    imageAlt: "Heavy Ship Hull Block Assembly and Drydock Erection",
     description: "Fabrication, pre-erection assembly, and drydock/berth erection of complex hull blocks, transverse & longitudinal bulkheads, double bottom sections, and superstructure modules.",
     deliverables: [
       "Hull block section alignment & erection",
@@ -39,9 +45,12 @@ export const SERVICES_DATA = [
   {
     id: "pipe-fabrication",
     category: "piping",
+    categoryLabel: "Piping & Welding",
     number: "03",
     title: "Pipe Fabrication & Installation",
     tagline: "High-Pressure Marine & Engine Room Pipe Spooling",
+    image: "/images/services/pipe-fabrication.jpg",
+    imageAlt: "High Pressure Cu-Ni and Stainless Steel Marine Piping System",
     description: "Shop fabrication and on-board installation of marine pipe spools across sea water, bilge, ballast, fuel oil, hydraulic, fire-fighting, and exhaust gas systems using high-spec metallurgy.",
     deliverables: [
       "Cu-Ni (Copper Nickel 90/10), SS316L & Carbon Steel spooling",
@@ -55,9 +64,12 @@ export const SERVICES_DATA = [
   {
     id: "plate-fitting",
     category: "shipbuilding",
+    categoryLabel: "Hull & Structural",
     number: "04",
     title: "Plate Fitting & Fabrication",
     tagline: "Precision Shell Plating, Curvature & Fairing",
+    image: "/images/services/plate-fitting.jpg",
+    imageAlt: "Precision Curved Shell Plate Alignment and Ship Fitting",
     description: "Expert plate development, roll bending, edge preparation (beveling), and 3D fit-up for bulbous bows, stern frames, bottom shell plating, and curved bilge strakes.",
     deliverables: [
       "Complex 3D curvature plate fairing & fit-up",
@@ -71,9 +83,12 @@ export const SERVICES_DATA = [
   {
     id: "certified-welding",
     category: "piping",
+    categoryLabel: "Piping & Welding",
     number: "05",
     title: "SMAW / FCAW / GTAW Certified Welding",
     tagline: "Class-Qualified 6G & 6GR Multi-Process Welding",
+    image: "/images/services/certified-welding.jpg",
+    imageAlt: "Certified 6G TIG and FCAW Pipe and Structural Welding",
     description: "Radiography and ultrasonic testing (RT/UT) compliant welding by certified welders utilizing SMAW (Manual Metal Arc), FCAW (Flux-Cored Arc), and GTAW (TIG) processes on high-tensile steel and exotic alloys.",
     deliverables: [
       "6G / 6GR positions on marine pipe spools & heavy nodes",
@@ -87,9 +102,12 @@ export const SERVICES_DATA = [
   {
     id: "ship-repair",
     category: "repair",
+    categoryLabel: "Ship Repair",
     number: "06",
     title: "Ship Repair & Maintenance",
     tagline: "Afloat, Anchorage & Drydock Emergency Overhauls",
+    image: "/images/services/ship-repair.jpg",
+    imageAlt: "Drydock Vessel Repair, Steel Renewal and Overhaul",
     description: "Rapid deployment repair teams for commercial, naval, and offshore vessels in Goa waters, executing steel renewals, sea chest overhauls, rudder/propeller compartment repairs, and pipe retrofits.",
     deliverables: [
       "Hull plate renewals & internal stiffener crop-and-replace",
@@ -103,9 +121,12 @@ export const SERVICES_DATA = [
   {
     id: "grinding-cutting",
     category: "shipbuilding",
+    categoryLabel: "Hull & Structural",
     number: "07",
     title: "Grinding, Cutting & Fit-up",
     tagline: "Heavy Thermal Cutting & Mechanical Edge Preparation",
+    image: "/images/services/grinding-cutting.jpg",
+    imageAlt: "Heavy Angle Grinding and Weld Edge Beveling with Sparks",
     description: "Accurate oxy-fuel, plasma cutting, air-carbon arc gouging, back gouging, and grinding to achieve defect-free weld root preparation and pristine finish standards.",
     deliverables: [
       "Air-arc gouging of structural butt welds for back-welding",
@@ -119,9 +140,12 @@ export const SERVICES_DATA = [
   {
     id: "skilled-manpower",
     category: "manpower",
+    categoryLabel: "Manpower & Safety",
     number: "08",
     title: "Skilled Technical Manpower Supply",
     tagline: "Certified Marine Welders, Fitters & Riggers",
+    image: "/images/services/skilled-manpower.jpg",
+    imageAlt: "Certified Marine Tradesmen and Shipyard Workforce Crew",
     description: "Immediate mobilization of certified marine tradesmen with verified shipyard experience, trade test credentials, and full statutory PF/ESIC/Insurance compliance.",
     deliverables: [
       "Certified 6G Pipe Welders (SMAW, GTAW, FCAW)",
@@ -135,9 +159,12 @@ export const SERVICES_DATA = [
   {
     id: "site-supervision",
     category: "manpower",
+    categoryLabel: "Manpower & Safety",
     number: "09",
     title: "Site Supervision & Work Coordination",
     tagline: "On-Site Naval Foremen & Execution Management",
+    image: "/images/services/site-supervision.jpg",
+    imageAlt: "Shipyard Site Supervisor and Naval Engineer Reviewing Blueprints",
     description: "Dedicated site engineers and supervisors overseeing daily production schedules, drawing interpretations, trade logistics, and shipyard interface coordination.",
     deliverables: [
       "Shipyard drawing interpretation & work packaging",
@@ -151,9 +178,12 @@ export const SERVICES_DATA = [
   {
     id: "safety-compliance",
     category: "manpower",
+    categoryLabel: "Manpower & Safety",
     number: "10",
     title: "Safety & Quality Compliance",
     tagline: "Zero-Accident Protocol & Full QA/QC Documentation",
+    image: "/images/services/safety-compliance.jpg",
+    imageAlt: "QA QC Safety Inspector Performing Marine Weld Inspection",
     description: "Comprehensive adherence to shipyard HSE norms, daily toolbox talks, hot work permits, confined space entry protocols, and stage-by-stage quality inspection sign-offs.",
     deliverables: [
       "Mandatory shipyard PPE & safety harness protocols",

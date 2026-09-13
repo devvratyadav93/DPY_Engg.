@@ -1,63 +1,70 @@
 /* ==========================================================================
-   DPY Marine Engineering - Design System Variables & Tokens
+   DPY Marine Engineering - Light Mode Design System Variables & Tokens
    ========================================================================== */
 
 :root {
-  /* Color Palette - Deep Oceanic Navy & Precision Maritime Cyan */
-  --bg-primary: #050d1a;
-  --bg-secondary: #0a192f;
-  --bg-tertiary: #0f2442;
-  --bg-card: rgba(14, 34, 61, 0.7);
-  --bg-card-hover: rgba(19, 45, 80, 0.85);
-  --bg-glass: rgba(7, 21, 39, 0.85);
+  /* Color Palette - Clean Maritime Corporate Light Mode */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-card-hover: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.92);
 
-  /* Primary & Accent Tones */
+  /* Primary Navy & Accent Ocean Cyan */
+  --navy-dark: #091e36;
+  --navy-primary: #0f294a;
+  --navy-light: #1e3a5f;
+  
   --primary: #0284c7;
-  --primary-light: #38bdf8;
+  --primary-light: #0ea5e9;
   --primary-dark: #0369a1;
-  --primary-glow: rgba(56, 189, 248, 0.35);
+  --primary-glow: rgba(2, 132, 199, 0.15);
 
   --secondary: #0f3860;
-  --secondary-accent: #1e4976;
+  --secondary-accent: #e0f2fe;
 
-  --accent-gold: #f59e0b;
-  --accent-gold-glow: rgba(245, 158, 11, 0.3);
-  --accent-emerald: #10b981;
-  --accent-emerald-glow: rgba(16, 185, 129, 0.25);
+  --accent-gold: #d97706;
+  --accent-gold-bg: #fef3c7;
+  --accent-emerald: #059669;
+  --accent-emerald-bg: #ecfdf5;
 
   /* Text & Foreground */
   --text-white: #ffffff;
-  --text-main: #f1f5f9;
-  --text-muted: #94a3b8;
+  --text-heading: #091e36;
+  --text-main: #1e293b;
+  --text-muted: #475569;
   --text-subtle: #64748b;
-  --text-cyan: #38bdf8;
+  --text-cyan: #0284c7;
 
   /* Borders & Dividers */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-light: rgba(56, 189, 248, 0.2);
-  --border-focus: #38bdf8;
+  --border-subtle: #e2e8f0;
+  --border-light: #cbd5e1;
+  --border-focus: #0284c7;
 
   /* Typography */
   --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Elevations & Shadows */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.25);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
-  --shadow-lg: 0 10px 28px rgba(0, 0, 0, 0.45);
-  --shadow-cyan: 0 8px 24px rgba(2, 132, 199, 0.25);
-  --shadow-glow: 0 0 30px rgba(56, 189, 248, 0.2);
+  --shadow-sm: 0 1px 3px rgba(9, 30, 54, 0.06), 0 1px 2px rgba(9, 30, 54, 0.04);
+  --shadow-md: 0 4px 16px rgba(9, 30, 54, 0.08), 0 2px 6px rgba(9, 30, 54, 0.04);
+  --shadow-lg: 0 12px 32px rgba(9, 30, 54, 0.12), 0 4px 12px rgba(9, 30, 54, 0.06);
+  --shadow-cyan: 0 8px 24px rgba(2, 132, 199, 0.16);
+  --shadow-hover: 0 16px 36px rgba(9, 30, 54, 0.12);
 
   /* Radii */
   --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
-  --radius-xl: 26px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
   --radius-full: 9999px;
 
   /* Layout & Transitions */
-  --max-width: 1280px;
-  --nav-height: 80px;
+  --max-width: 1560px;
+  --max-width-wide: 1720px;
+  --container-padding: clamp(1.25rem, 3.5vw, 3.5rem);
+  --nav-height: 84px;
   --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.45s cubic-bezier(0.16, 1, 0.3, 1);

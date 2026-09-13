@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Reusable UI Components
+   Reusable UI Components - Clean Maritime Light Mode
    ========================================================================== */
 
 /* Buttons */
@@ -20,43 +20,44 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary) 0%, #0369a1 100%);
-  color: var(--text-white);
-  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35);
-  border: 1px solid rgba(56, 189, 248, 0.3);
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.28);
+  border: 1px solid #0284c7;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #0284c7 0%, #0891b2 100%);
+  background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.45);
-  color: var(--text-white);
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.38);
+  color: #ffffff;
 }
 
 .btn-secondary {
-  background: rgba(15, 36, 66, 0.7);
-  color: var(--text-white);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
+  background: #ffffff;
+  color: var(--navy-dark);
+  border: 1px solid #cbd5e1;
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-secondary:hover {
-  background: rgba(30, 73, 118, 0.85);
-  border-color: var(--primary-light);
+  background: #f0f7ff;
+  border-color: var(--primary);
+  color: var(--primary-dark);
   transform: translateY(-2px);
-  color: var(--text-white);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-outline {
   background: transparent;
-  color: var(--primary-light);
-  border: 1px solid var(--border-light);
+  color: var(--primary-dark);
+  border: 1px solid #bae6fd;
 }
 
 .btn-outline:hover {
-  background: rgba(56, 189, 248, 0.1);
-  border-color: var(--primary-light);
-  color: var(--text-white);
+  background: #f0f9ff;
+  border-color: var(--primary);
+  color: var(--primary-dark);
 }
 
 .btn-sm {
@@ -66,7 +67,7 @@
 }
 
 .btn-lg {
-  padding: 1.1rem 2.25rem;
+  padding: 1rem 2.25rem;
   font-size: 1.05rem;
   border-radius: var(--radius-lg);
 }
@@ -89,34 +90,34 @@
   padding: 0.35rem 0.85rem;
   border-radius: var(--radius-full);
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
 }
 
 .badge-cyan {
-  background: rgba(2, 132, 199, 0.15);
-  color: var(--primary-light);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
 }
 
 .badge-gold {
-  background: rgba(245, 158, 11, 0.15);
-  color: #fbbf24;
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
 }
 
 .badge-emerald {
-  background: rgba(16, 185, 129, 0.15);
-  color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
 }
 
 /* Section Header */
 .section-header {
   text-align: center;
-  max-width: 780px;
-  margin: 0 auto 3.5rem;
+  max-width: 960px;
+  margin: 0 auto clamp(2rem, 3.5vw, 3.5rem);
 }
 
 .section-header.left-aligned {
@@ -132,73 +133,64 @@
   font-size: clamp(2rem, 3.5vw, 2.75rem);
   font-weight: 800;
   margin-bottom: 1rem;
-  background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--navy-dark);
 }
 
 .section-title span.highlight {
-  background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #0284c7;
 }
 
 .section-subtitle {
-  font-size: 1.1rem;
+  font-size: clamp(1.02rem, 1.2vw, 1.15rem);
   color: var(--text-muted);
+  line-height: 1.65;
 }
 
 /* Glass Cards */
 .glass-card {
-  background: var(--bg-card);
+  background: #ffffff;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  padding: 2rem;
-  backdrop-filter: blur(12px);
-  box-shadow: var(--shadow-md);
+  padding: clamp(1.5rem, 2.5vw, 2.25rem);
+  box-shadow: var(--shadow-sm);
   transition: all var(--transition-normal);
   position: relative;
-  overflow: hidden;
-}
-
-.glass-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.3), transparent);
 }
 
 .glass-card:hover {
-  background: var(--bg-card-hover);
-  border-color: var(--border-light);
+  background: #ffffff;
+  border-color: #bae6fd;
   transform: translateY(-4px);
-  box-shadow: var(--shadow-cyan);
+  box-shadow: var(--shadow-md);
 }
 
 /* Grid Layouts */
 .grid-2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
 }
 
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.75rem;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
 }
 
 .grid-4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  gap: clamp(1rem, 2vw, 1.75rem);
 }
 
-@media (max-width: 1024px) {
-  .grid-3, .grid-4 {
+@media (max-width: 1100px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .grid-3 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -206,9 +198,10 @@
 @media (max-width: 768px) {
   .grid-2, .grid-3, .grid-4 {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
   section {
-    padding: 3.5rem 0;
+    padding: 3rem 0;
   }
 }
 
@@ -216,8 +209,8 @@
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(3, 10, 20, 0.85);
-  backdrop-filter: blur(8px);
+  background: rgba(9, 30, 54, 0.65);
+  backdrop-filter: blur(6px);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -234,14 +227,14 @@
 }
 
 .modal-content {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-light);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: var(--radius-xl);
   max-width: 680px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 20px 48px rgba(9, 30, 54, 0.2);
   padding: 2.5rem;
   position: relative;
   transform: scale(0.95);
@@ -259,16 +252,119 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-muted);
+  background: #f1f5f9;
+  color: #64748b;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   transition: all var(--transition-fast);
 }
 
 .modal-close:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: var(--text-white);
+  background: #e2e8f0;
+  color: var(--navy-dark);
+}
+
+/* ==========================================================================
+   Form Controls Design System (Global)
+   ========================================================================== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-bottom: 1.25rem;
+  width: 100%;
+  text-align: left;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.2rem;
+}
+
+.form-label-hint {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #0284c7;
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 0.82rem 1.1rem;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: var(--radius-md);
+  color: var(--navy-dark);
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: all var(--transition-fast);
+  box-sizing: border-box;
+  box-shadow: 0 1px 2px rgba(9, 30, 54, 0.04);
+}
+
+.form-input:hover, .form-select:hover, .form-textarea:hover {
+  border-color: #94a3b8;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  border-color: #0284c7;
+  box-shadow: 0 0 0 3.5px rgba(2, 132, 199, 0.15);
+  background: #ffffff;
+}
+
+.form-input::placeholder, .form-textarea::placeholder {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.form-row, .form-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .form-row, .form-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+.form-textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.form-status {
+  padding: 0.9rem 1.2rem;
+  border-radius: var(--radius-md);
+  font-size: 0.92rem;
+  display: none;
+  margin-bottom: 1.35rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.form-status.success {
+  display: block;
+  background: #ecfdf5;
+  border: 1.5px solid #10b981;
+  color: #065f46;
+}
+
+.form-status.error {
+  display: block;
+  background: #fef2f2;
+  border: 1.5px solid #ef4444;
+  color: #991b1b;
 }

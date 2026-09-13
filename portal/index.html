@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Portal Dashboard | DPY Marine Engineering</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+
+  <!-- Modular Stylesheets -->
+  <link rel="stylesheet" href="/src/styles/variables.css" />
+  <link rel="stylesheet" href="/src/styles/base.css" />
+  <link rel="stylesheet" href="/src/styles/components.css" />
+  <link rel="stylesheet" href="/src/styles/navigation.css" />
+  <link rel="stylesheet" href="/src/styles/auth.css" />
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="navbar">
+    <div class="container">
+      <a href="/" class="brand-link" aria-label="DPY Marine Engineering Homepage">
+        <img src="/dpy-mark-trans.png" alt="DPY Marine Engineering Logo" class="brand-mark-img" />
+        <div class="brand-text-block">
+          <span class="brand-company-title">MARINE ENGINEERING</span>
+          <span class="brand-company-services">SHIPBUILDING &bull; OUTFITTING &bull; PIPING &bull; FABRICATION</span>
+          <span class="brand-company-tagline">Building Tomorrow's Vessels with Trust &amp; Excellence</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" aria-label="Primary Navigation">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/services/" class="nav-link">Services</a>
+        <a href="/about/" class="nav-link">About</a>
+        <a href="/contact/" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div id="nav-auth-container" class="nav-auth-container"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="portal-wrapper">
+    <div class="container">
+      <!-- DASHBOARD HEADER -->
+      <div class="portal-header-card">
+        <div class="portal-user-info">
+          <h2>Welcome, <span id="client-user-name">Client</span></h2>
+          <p id="client-company-name">Shipyard Procurement Division &bull; Verified Partner</p>
+        </div>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <a href="/services/" class="btn btn-sm btn-outline">Explore All 10 Services</a>
+          <button id="btn-open-quick-rfq" class="btn btn-sm btn-primary">+ New Work Package Inquiry</button>
+        </div>
+      </div>
+
+      <!-- METRIC STATS -->
+      <div class="portal-stats-grid">
+        <div class="portal-stat-card">
+          <div class="portal-stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12h6"/><path d="M12 9v6"/></svg>
+          </div>
+          <div class="portal-stat-content">
+            <h3 id="stat-total-inquiries">2</h3>
+            <p>Work Packages Requested</p>
+          </div>
+        </div>
+
+        <div class="portal-stat-card">
+          <div class="portal-stat-icon" style="background: #fef3c7; color: #b45309;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="portal-stat-content">
+            <h3 id="stat-pending">1</h3>
+            <p>Under Technical Review</p>
+          </div>
+        </div>
+
+        <div class="portal-stat-card">
+          <div class="portal-stat-icon" style="background: #ecfdf5; color: #047857;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="portal-stat-content">
+            <h3 id="stat-quoted">1</h3>
+            <p>Quotations Dispatched</p>
+          </div>
+        </div>
+
+        <div class="portal-stat-card">
+          <div class="portal-stat-icon" style="background: #f0fdf4; color: #16a34a;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="portal-stat-content">
+            <h3>100%</h3>
+            <p>MSME / GST Verified</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN CONTENT SPLIT -->
+      <div class="portal-content-grid">
+        <!-- Left: RFQ List & Tracking -->
+        <div class="portal-card">
+          <div class="portal-card-header">
+            <h3 class="portal-card-title">Your Active Work Packages &amp; RFQs</h3>
+            <span class="badge badge-cyan">Real-Time Status</span>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table class="inquiries-table">
+              <thead>
+                <tr>
+                  <th>Package Ref</th>
+                  <th>Discipline / Scope</th>
+                  <th>Model</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody id="inquiries-tbody">
+                <!-- Populated dynamically via auth.js / localStorage -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Right: Fast Actions & Official Documents -->
+        <div style="display: flex; flex-direction: column; gap: 1.75rem;">
+          <!-- Official Compliance Documents -->
+          <div class="portal-card">
+            <h3 class="portal-card-title" style="margin-bottom: 1.25rem;">Shipyard Credentials Dossier</h3>
+            <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: var(--radius-md);">
+                <div>
+                  <strong style="font-size: 0.88rem; color: var(--navy-dark); display: block;">MSME Registration Certificate</strong>
+                  <span style="font-size: 0.78rem; color: #64748b;">Government of India Registered</span>
+                </div>
+                <span class="badge badge-emerald">Verified</span>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: var(--radius-md);">
+                <div>
+                  <strong style="font-size: 0.88rem; color: var(--navy-dark); display: block;">GSTIN &amp; PAN Documentation</strong>
+                  <span style="font-size: 0.78rem; color: #64748b;">Tax Compliance Status</span>
+                </div>
+                <span class="badge badge-emerald">Compliant</span>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: var(--radius-md);">
+                <div>
+                  <strong style="font-size: 0.88rem; color: var(--navy-dark); display: block;">6G Welder Qualification Records</strong>
+                  <span style="font-size: 0.78rem; color: #64748b;">SMAW / FCAW / GTAW Matrix</span>
+                </div>
+                <span class="badge badge-cyan">Available</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Direct Coordinator Card -->
+          <div class="portal-card" style="background: linear-gradient(135deg, #091e36 0%, #0f294a 100%); color: #ffffff;">
+            <span class="badge badge-gold" style="margin-bottom: 0.75rem;">Direct Leadership Channel</span>
+            <h4 style="font-size: 1.15rem; font-weight: 800; color: #ffffff; margin-bottom: 0.4rem;">
+              Dwarika Prasad Yadav
+            </h4>
+            <p style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 1.25rem;">
+              Proprietor, DPY Marine Engineering &bull; Direct technical coordination for urgent work packages.
+            </p>
+            <div style="display: flex; gap: 0.75rem;">
+              <a href="tel:+919876543210" class="btn btn-sm btn-outline" style="border-color: #38bdf8; color: #38bdf8;">
+                Call +91 98765 43210
+              </a>
+              <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                WhatsApp Desk &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module">
+    import { getCurrentUser, logoutUser, getClientInquiries, addClientInquiry } from '/src/scripts/auth.js';
+
+    const user = getCurrentUser();
+    if (!user) {
+      window.location.href = '/login/';
+    }
+
+    // Populate user info
+    if (user) {
+      document.getElementById('client-user-name').textContent = user.fullName;
+      document.getElementById('client-company-name').textContent = `${user.companyName} • Registered Shipyard Account`;
+    }
+
+    document.getElementById('portal-logout-btn')?.addEventListener('click', () => {
+      logoutUser();
+    });
+
+    // Populate Inquiries Table
+    const tbody = document.getElementById('inquiries-tbody');
+    const inquiries = getClientInquiries();
+
+    function renderTable() {
+      tbody.innerHTML = inquiries.map(item => {
+        let statusClass = 'status-pending';
+        let statusText = 'Pending';
+        if (item.status === 'IN_REVIEW') {
+          statusClass = 'status-review';
+          statusText = 'Under Review';
+        } else if (item.status === 'QUOTATION_DISPATCHED') {
+          statusClass = 'status-quoted';
+          statusText = 'Quotation Sent';
+        }
+
+        return `
+          <tr>
+            <td><strong>${item.id}</strong></td>
+            <td>
+              <div style="font-weight: 700; color: var(--navy-dark);">${item.scope}</div>
+              <div style="font-size: 0.8rem; color: #64748b;">${item.notes || ''}</div>
+            </td>
+            <td>${item.model}</td>
+            <td><span class="status-pill ${statusClass}">${statusText}</span></td>
+            <td style="color: #64748b; font-size: 0.84rem;">${item.date}</td>
+          </tr>
+        `;
+      }).join('');
+
+      // Update stat counters
+      document.getElementById('stat-total-inquiries').textContent = inquiries.length;
+      document.getElementById('stat-pending').textContent = inquiries.filter(i => i.status === 'IN_REVIEW' || i.status === 'PENDING').length;
+      document.getElementById('stat-quoted').textContent = inquiries.filter(i => i.status === 'QUOTATION_DISPATCHED').length;
+    }
+
+    renderTable();
+
+    // Quick Inquiry Prompt
+    document.getElementById('btn-open-quick-rfq')?.addEventListener('click', () => {
+      const scope = prompt('Enter your target work package scope (e.g., Hull block erection, Engine room pipe spooling, 6G Welders):');
+      if (scope && scope.trim()) {
+        addClientInquiry({
+          scope: scope.trim(),
+          model: 'Subcontract Basis',
+          notes: 'Submitted via Client Portal'
+        });
+        renderTable();
+        alert('Work package inquiry added successfully! Our technical desk will review it shortly.');
+      }
+    });
+  </script>
+</body>
+</html>
