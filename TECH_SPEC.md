@@ -182,6 +182,12 @@ interface RFQPayload {
 ---
 
 ## Changelog
+### 2026-09-19 — Mobile Viewport Optimization & Component Hardening
+- Modified: `src/scripts/navigation.js` (created), `src/scripts/auth.js`, `src/scripts/main.js`, `about/index.html`, `portal/index.html`, `src/styles/auth.css`, `src/styles/components.css`, `src/styles/navigation.css`, and `src/styles/services.css`.
+- Before: Mobile navigation failed to open on `/about/` and was missing on `/portal/`; registration form fields were squished into 2 columns on 375px screens; modal dialog scrollbar clipped rounded corners; and subpage scroll events stripped active nav highlights.
+- After: Implemented global `navigation.js` handling mobile drawers across all pages; added `#mobile-toggle` and `#mobile-drawer` to `/portal/`; forced `.form-row, .form-grid-2` to single-column on mobile (< 640px); streamlined mobile login/register showcase header; added mobile swipeable pills to `.services-filter-bar`; and refined modal overlay and scrollbar gutter.
+- Reason: User reported that pages and components were not opening or rendering effectively in mobile view.
+
 ### 2026-09-19 — Cloudflare Deployment Fix & Wrangler Static Assets Configuration
 - Modified: `wrangler.jsonc` (created), `vite.config.js` (added `plugins: []`), `package.json` & `package-lock.json` (added `wrangler` devDependency and `deploy` script).
 - Before: Cloudflare deployment running `npx wrangler deploy` halted with error `Cannot modify Vite config: could not find a valid plugins array` due to missing `wrangler.jsonc` and unconfigured `plugins` array in `vite.config.js`.

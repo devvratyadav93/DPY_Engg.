@@ -241,6 +241,24 @@
   transition: transform var(--transition-normal);
 }
 
+@media (max-width: 640px) {
+  .modal-overlay {
+    padding: 0.75rem;
+  }
+  .modal-content {
+    padding: 1.75rem 1.25rem 1.5rem;
+    border-radius: var(--radius-lg);
+    max-height: 88vh;
+  }
+  .modal-close {
+    top: 0.85rem;
+    right: 0.85rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1.2rem;
+  }
+}
+
 .modal-overlay.active .modal-content {
   transform: scale(1);
 }

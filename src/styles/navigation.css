@@ -549,6 +549,16 @@
   .top-bar {
     display: none;
   }
+  .avatar-text,
+  .avatar-chevron {
+    display: none;
+  }
+  .avatar-trigger {
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+  }
 }
 
 @media (max-width: 480px) {

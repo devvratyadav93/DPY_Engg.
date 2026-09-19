@@ -4,76 +4,48 @@
 
 import { SERVICES_DATA } from './services-data.js';
 import { initRfqModal } from './rfq-modal.js';
+import { initMobileNav } from './navigation.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize RFQ Modal Dialog
   const rfqModal = initRfqModal();
 
-  // 3. Render 10 Core Marine Services
+  // 2. Global Mobile Navigation
+  initMobileNav();
+
+  // 3. Render 10 Core Marine Services (if present)
   renderServices('all');
   initServiceFilters();
 
-  // 4. Header Scroll State
-  const navbar = document.querySelector('.navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      navbar?.classList.add('scrolled');
-    } else {
-      navbar?.classList.remove('scrolled');
-    }
-  }, { passive: true });
+  // 4. Section Scroll Spy (Active nav highlighting - Homepage only)
+  const isHomePage = window.location.pathname === '/' || 
+                     window.location.pathname === '/index.html' || 
+                     window.location.pathname.endsWith('/DPY%20Engg/') ||
+                     window.location.pathname.endsWith('/DPY%20Engg/index.html');
 
-  // 5. Mobile Navigation Drawer
-  const mobileToggle = document.getElementById('mobile-toggle');
-  const mobileDrawer = document.getElementById('mobile-drawer');
-  const drawerClose = document.getElementById('drawer-close');
-  const drawerLinks = document.querySelectorAll('.drawer-nav .nav-link');
+  if (isHomePage) {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-menu .nav-link');
 
-  function openDrawer() {
-    mobileDrawer?.classList.add('open');
-    mobileToggle?.classList.add('open');
-    mobileToggle?.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
+    window.addEventListener('scroll', () => {
+      const scrollPos = window.scrollY + 120;
+      sections.forEach(section => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        const id = section.getAttribute('id');
+        if (scrollPos >= top && scrollPos < top + height) {
+          navLinks.forEach(link => {
+            if (link.getAttribute('href')?.startsWith('#')) {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === `#${id}`) {
+                link.classList.add('active');
+              }
+            }
+          });
+        }
+      });
+    }, { passive: true });
   }
-
-  function closeDrawer() {
-    mobileDrawer?.classList.remove('open');
-    mobileToggle?.classList.remove('open');
-    mobileToggle?.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-
-  mobileToggle?.addEventListener('click', () => {
-    if (mobileDrawer?.classList.contains('open')) {
-      closeDrawer();
-    } else {
-      openDrawer();
-    }
-  });
-
-  drawerClose?.addEventListener('click', closeDrawer);
-  drawerLinks.forEach(link => link.addEventListener('click', closeDrawer));
-
-  // 6. Section Scroll Spy (Active nav highlighting)
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-menu .nav-link');
-
-  window.addEventListener('scroll', () => {
-    const scrollPos = window.scrollY + 120;
-    sections.forEach(section => {
-      const top = section.offsetTop;
-      const height = section.offsetHeight;
-      const id = section.getAttribute('id');
-      if (scrollPos >= top && scrollPos < top + height) {
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${id}`) {
-            link.classList.add('active');
-          }
-        });
-      }
-    });
-  }, { passive: true });
 
   // 7. Main RFP / Contact Form Handler
   const contactForm = document.getElementById('contact-rfp-form');

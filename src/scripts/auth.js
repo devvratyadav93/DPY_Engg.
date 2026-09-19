@@ -2,6 +2,8 @@
  * DPY Marine Engineering - Client Authentication & Portal State Manager
  */
 
+import { initMobileNav } from './navigation.js';
+
 const STORAGE_KEY = 'dyp_client_session';
 const INQUIRIES_KEY = 'dyp_client_inquiries';
 
@@ -332,4 +334,5 @@ export function updateNavAuthStatus() {
 // Auto-run on script load
 document.addEventListener('DOMContentLoaded', () => {
   updateNavAuthStatus();
+  initMobileNav();
 });

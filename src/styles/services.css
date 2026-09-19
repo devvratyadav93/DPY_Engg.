@@ -39,6 +39,27 @@
   box-shadow: 0 4px 12px rgba(2, 132, 199, 0.28);
 }
 
+@media (max-width: 640px) {
+  .services-filter-bar {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 0.25rem 0.5rem 0.85rem;
+    margin-bottom: 2rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .services-filter-bar::-webkit-scrollbar {
+    display: none;
+  }
+  .filter-btn {
+    white-space: nowrap;
+    padding: 0.5rem 1.1rem;
+    font-size: 0.82rem;
+    flex-shrink: 0;
+  }
+}
+
 /* Service Card Detailed Design */
 .service-card {
   background: #ffffff;

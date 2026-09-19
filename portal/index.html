@@ -41,9 +41,30 @@
 
       <div class="nav-actions">
         <div id="nav-auth-container" class="nav-auth-container"></div>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Navigation Menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div>
+      <div class="drawer-header">
+        <span class="badge badge-cyan">DPY Marine</span>
+        <button class="modal-close" id="drawer-close">&times;</button>
+      </div>
+      <nav class="drawer-nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/services/" class="nav-link">Core Services</a>
+        <a href="/about/" class="nav-link">About DPY</a>
+        <a href="/contact/" class="nav-link">Contact &amp; Yard</a>
+        <a href="/portal/" class="nav-link active">Client Portal</a>
+      </nav>
+    </div>
+    <div class="drawer-footer"></div>
+  </div>
 
   <main class="portal-wrapper">
     <div class="container">

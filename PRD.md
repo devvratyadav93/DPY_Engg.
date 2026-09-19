@@ -81,6 +81,11 @@ Visual comparison and selection for:
 ---
 
 ## Changelog
+### 2026-09-19 — Mobile Viewport Optimization & Component Hardening
+- Changed: Implemented global `src/scripts/navigation.js` enabling responsive mobile drawers on all pages; integrated `#mobile-toggle` and `#mobile-drawer` on Client Portal (`/portal/`); converted registration form fields to full-width single-column layout on mobile viewports (< 640px); streamlined login/register brand header on mobile; refined RFQ modal dialog padding and scrollbars; made service category filters horizontally swipeable; and fixed Section Scroll Spy on subpages.
+- Reason: User reported that several pages and components were not opening or rendering effectively in mobile view.
+- Impact: Seamless touch navigation and native-feeling form interactions across all mobile and tablet viewports down to 320px screen width.
+
 ### 2026-09-19 — Cloudflare Deployment Fix & Wrangler Static Assets Configuration
 - Changed: Added `wrangler.jsonc` declaring `./dist` static assets directory with single-page application fallback, added `plugins: []` in `vite.config.js`, and added `wrangler` devDependency with `deploy` script in `package.json`.
 - Reason: Cloudflare deployment pipeline failed with `Cannot modify Vite config: could not find a valid plugins array` when attempting interactive setup in non-interactive CI.
