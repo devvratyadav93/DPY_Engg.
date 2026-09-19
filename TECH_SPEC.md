@@ -182,6 +182,12 @@ interface RFQPayload {
 ---
 
 ## Changelog
+### 2026-09-19 — Cloudflare Deployment Fix & Wrangler Static Assets Configuration
+- Modified: `wrangler.jsonc` (created), `vite.config.js` (added `plugins: []`), `package.json` & `package-lock.json` (added `wrangler` devDependency and `deploy` script).
+- Before: Cloudflare deployment running `npx wrangler deploy` halted with error `Cannot modify Vite config: could not find a valid plugins array` due to missing `wrangler.jsonc` and unconfigured `plugins` array in `vite.config.js`.
+- After: Added explicit `wrangler.jsonc` declaring `./dist` static assets directory with SPA fallback, added `plugins: []` in `vite.config.js`, and installed `wrangler` locally.
+- Reason: User's Cloudflare automated deploy command failed when Wrangler attempted interactive configuration in non-interactive CI.
+
 ### 2026-09-19 — GitHub Remote Repository Migration to DPY_Engg.
 - Modified: Git origin remote configuration, `TECH_SPEC.md`, `PRD.md`.
 - Before: Remote pointed to deleted repository `https://github.com/devvratyadav93/DYP_Engg..git`.

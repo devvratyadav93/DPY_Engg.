@@ -81,6 +81,11 @@ Visual comparison and selection for:
 ---
 
 ## Changelog
+### 2026-09-19 — Cloudflare Deployment Fix & Wrangler Static Assets Configuration
+- Changed: Added `wrangler.jsonc` declaring `./dist` static assets directory with single-page application fallback, added `plugins: []` in `vite.config.js`, and added `wrangler` devDependency with `deploy` script in `package.json`.
+- Reason: Cloudflare deployment pipeline failed with `Cannot modify Vite config: could not find a valid plugins array` when attempting interactive setup in non-interactive CI.
+- Impact: Enables zero-touch automated deploys via `npx wrangler deploy` on Cloudflare, bypassing interactive setup prompts.
+
 ### 2026-09-19 — GitHub Remote Repository Migration to DPY_Engg.
 - Changed: Updated Git origin remote configuration and project documentation from legacy `DYP_Engg.` to the newly established GitHub repository (`https://github.com/devvratyadav93/DPY_Engg..git`). Synchronized all multi-page source files, CI/CD verification workflows, static assets, and relational schema files.
 - Reason: User deleted the previous GitHub repository and created a new repository (`devvratyadav93/DPY_Engg.`).
