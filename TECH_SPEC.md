@@ -182,6 +182,18 @@ interface RFQPayload {
 ---
 
 ## Changelog
+### 2026-09-19 — Vendor Credentials 4-Box Grid Mobile Single-Column Layout
+- Modified: `src/styles/engagement.css` (updated `.compliance-credentials-card`, `.compliance-badge-grid`, and `.credential-box`).
+- Before: In mobile viewports, the 4 vendor credential boxes remained forced in a 2x2 grid, causing text to squeeze into narrow columns (~70px readable width) with awkward line breaks and uneven box heights.
+- After: Added `@media (max-width: 640px)` rule converting `.compliance-badge-grid` to a single column (`grid-template-columns: 1fr; gap: 0.85rem;`), adjusted card padding, and aligned icons and text horizontally for uniform, clean, and balanced cards.
+- Reason: User reported that the 4 boxes were looking uneven when viewing from mobile.
+
+### 2026-09-19 — Section 5 CTA Button Mobile Responsive Wrap & Rename
+- Modified: `index.html` (renamed CTA button label to `Explore All 10 Marine Disciplines`), `src/styles/components.css` (added `.btn { white-space: normal; text-align: center; max-width: 100%; }` and mobile `.btn-lg` scaling in `@media (max-width: 640px)`).
+- Before: Button labelled "View All 10 Marine Disciplines & Contract Models" had `white-space: nowrap` and large padding, expanding to > 500px width and overflowing mobile screens horizontally.
+- After: Renamed to punchy label "Explore All 10 Marine Disciplines" and enabled responsive text wrapping and padding, fitting seamlessly on mobile screens down to 320px width.
+- Reason: User requested wrapping the text or renaming the button because it was not appearing fit to screen on mobile view.
+
 ### 2026-09-19 — Mobile Viewport Optimization & Component Hardening
 - Modified: `src/scripts/navigation.js` (created), `src/scripts/auth.js`, `src/scripts/main.js`, `about/index.html`, `portal/index.html`, `src/styles/auth.css`, `src/styles/components.css`, `src/styles/navigation.css`, and `src/styles/services.css`.
 - Before: Mobile navigation failed to open on `/about/` and was missing on `/portal/`; registration form fields were squished into 2 columns on 375px screens; modal dialog scrollbar clipped rounded corners; and subpage scroll events stripped active nav highlights.

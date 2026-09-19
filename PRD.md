@@ -81,6 +81,16 @@ Visual comparison and selection for:
 ---
 
 ## Changelog
+### 2026-09-19 — Vendor Credentials 4-Box Grid Mobile Single-Column Layout
+- Changed: Transformed `.compliance-badge-grid` from a rigid 2x2 grid into a responsive 1-column stacked layout on mobile screens (< 640px) in [`src/styles/engagement.css`](file:///e:/My%20Projects/DPY%20Engg/src/styles/engagement.css), refined card padding, and equalized credential box heights on desktop.
+- Reason: User reported that the 4 credential boxes appeared uneven and cramped on mobile screens.
+- Impact: Restores clean, legible typography where titles and descriptions fit comfortably on a single line with icons aligned on the left, eliminating awkward word splitting.
+
+### 2026-09-19 — Section 5 CTA Button Mobile Responsive Wrap & Rename
+- Changed: Renamed the Section 5 call-to-action button in [`index.html`](file:///e:/My%20Projects/DPY%20Engg/index.html) from "View All 10 Marine Disciplines & Contract Models" to "Explore All 10 Marine Disciplines", and added mobile responsive wrapping and padding scaling to `.btn` and `.btn-lg` in [`src/styles/components.css`](file:///e:/My%20Projects/DPY%20Engg/src/styles/components.css).
+- Reason: User reported that this button was overflowing and not appearing fit to screen on mobile view.
+- Impact: Eliminates horizontal button overflow across all mobile viewports, including compact 320px screen widths, while maintaining an elegant touch target.
+
 ### 2026-09-19 — Mobile Viewport Optimization & Component Hardening
 - Changed: Implemented global `src/scripts/navigation.js` enabling responsive mobile drawers on all pages; integrated `#mobile-toggle` and `#mobile-drawer` on Client Portal (`/portal/`); converted registration form fields to full-width single-column layout on mobile viewports (< 640px); streamlined login/register brand header on mobile; refined RFQ modal dialog padding and scrollbars; made service category filters horizontally swipeable; and fixed Section Scroll Spy on subpages.
 - Reason: User reported that several pages and components were not opening or rendering effectively in mobile view.
