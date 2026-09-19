@@ -4,7 +4,7 @@
 - **Version:** 1.0.0
 - **Build Tool:** Vite 6.x
 - **Runtime Target:** Modern Web Browsers (ES2022+)
-- **Hosting / CI/CD:** Cloudflare Pages (via GitHub Repository: `devvratyadav93/DYP_Engg.`)
+- **Hosting / CI/CD:** Cloudflare Pages (via GitHub Repository: `devvratyadav93/DPY_Engg.`)
 
 ---
 
@@ -13,7 +13,7 @@
 The application is structured as a multi-page static application (MPA) built with Vite 6.x, utilizing clean directory routes (`/services/`, `/about/`, `/contact/`, `/login/`, `/register/`, `/portal/`) for direct static hosting on Cloudflare Pages.
 
 ```
-DYP Engg/
+DPY Engg/
 ├── vite.config.js              # Multi-page Rollup input configuration
 ├── schema.sql                  # Cloudflare D1 SQLite database schema (users, inquiries, manpower)
 ├── package.json
@@ -173,7 +173,7 @@ interface RFQPayload {
 ---
 
 ## 5. Cloudflare Pages CI/CD Specification
-- **Git Provider:** GitHub (`https://github.com/devvratyadav93/DYP_Engg.`)
+- **Git Provider:** GitHub (`https://github.com/devvratyadav93/DPY_Engg.`)
 - **Build System:** Cloudflare Pages standard Node.js builder
 - **Build Command:** `npm run build`
 - **Output Directory:** `dist`
@@ -182,6 +182,12 @@ interface RFQPayload {
 ---
 
 ## Changelog
+### 2026-09-19 — GitHub Remote Repository Migration to DPY_Engg.
+- Modified: Git origin remote configuration, `TECH_SPEC.md`, `PRD.md`.
+- Before: Remote pointed to deleted repository `https://github.com/devvratyadav93/DYP_Engg..git`.
+- After: Remote switched to new repository `https://github.com/devvratyadav93/DPY_Engg..git` with complete history and code synchronization.
+- Reason: User deleted legacy repository and established the new repository reflecting the correct acronym `DPY_Engg.`.
+
 ### 2026-09-13 — GitHub Actions Automated CI/CD Pipeline & Remote Sync
 - Modified: `.github/workflows/ci.yml` (new), `.gitignore` (added `scratch/`, `.env*`), and synchronized remote repository `https://github.com/devvratyadav93/DYP_Engg..git`.
 - Before: Local-only builds requiring manual error discovery.

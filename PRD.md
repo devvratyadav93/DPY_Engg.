@@ -81,6 +81,11 @@ Visual comparison and selection for:
 ---
 
 ## Changelog
+### 2026-09-19 — GitHub Remote Repository Migration to DPY_Engg.
+- Changed: Updated Git origin remote configuration and project documentation from legacy `DYP_Engg.` to the newly established GitHub repository (`https://github.com/devvratyadav93/DPY_Engg..git`). Synchronized all multi-page source files, CI/CD verification workflows, static assets, and relational schema files.
+- Reason: User deleted the previous GitHub repository and created a new repository (`devvratyadav93/DPY_Engg.`).
+- Impact: Seamlessly restores automated GitHub Actions CI/CD pipeline triggers and Cloudflare Pages git integration against the active repository.
+
 ### 2026-09-13 — GitHub Actions Automated CI/CD Pipeline & Remote Sync
 - Changed: Configured automated GitHub Actions workflow (`.github/workflows/ci.yml`) triggering on pushes and pull requests to `main`. Automatically installs dependencies (`npm ci`), executes the Vite multi-page production build (`npm run build`), and validates all 7 page artifacts (`dist/index.html`, `dist/services/`, `dist/about/`, `dist/contact/`, `dist/login/`, `dist/register/`, and `dist/portal/`). Updated `.gitignore` with `scratch/` and `.env*` rules. Synchronized entire multi-page codebase and assets to remote GitHub repository (`https://github.com/devvratyadav93/DYP_Engg..git`).
 - Reason: User requested pushing everything to GitHub and establishing automated CI/CD execution to eliminate manual error fixing for production issues.
